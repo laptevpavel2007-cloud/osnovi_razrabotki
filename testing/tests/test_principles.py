@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../src")
 
-from math_demo import add_with_bug, add_something
+from math_demo import add_with_bug, add_something, calulcate_tax
 
 def test_addition():
     assert add_with_bug(2, 2) == 4
@@ -49,11 +49,20 @@ def test_add_something_resonbc10able():
      add_something("abc", 10) == "abc10"
      add_something(10, "abc") == "10abc"
      add_something("abc", "xyz") == "abcxyz"
+     print("e,lce,cowecmcoea")
 
+def test_tax_caculation():
+    assert calulcate_tax(1030) == 150
+    assert calulcate_tax(2000) == 300
+    assert calulcate_tax(30) == 4.5
+    assert calulcate_tax(1) == .15
+    print("qemfoweof,we")
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     test_addition()
     test_addition_basic()
     test_bug_addition_notsuffition()
     test_bug_addition_enough()
     test_addition_duplicated_logi()
+    test_add_something_resonbc10able()
+    test_tax_caculation()
