@@ -1,0 +1,7 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: setuptools in C:\Users\lapte\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (82.0.1)
+Collecting wheel
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/87/22/b76d483683216dde3d67cba61fb2444be8d5be289bf628c13fc0fd90e5f9/wheel-0.46.3-py3-none-any.whl (30 kB)
+Requirement already satisfied: packaging>=24.0 in C:\Users\lapte\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages (from wheel) (26.0)
+Installing collected packages: wheel
+Successfully installed wheel-0.46.3

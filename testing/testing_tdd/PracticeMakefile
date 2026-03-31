@@ -1,0 +1,18 @@
+.PHONY: create-structure test-pytest install-dep install test add-library
+
+create-structure:
+    mkdir -p src docs tests
+    touch docs/DOMAIN.md
+    touch src/.gitkeep tests/.gitkeep
+    touch requirements.txt setup.py README.md
+
+install:
+    pip install -e
+
+install-dep:
+    pip install -r requirements
+
+test-pytest:
+    pytest
+
+test: install-dep install test-pytest
