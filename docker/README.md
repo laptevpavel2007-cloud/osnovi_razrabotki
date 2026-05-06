@@ -1,3 +1,4 @@
-# Repository for learning `GIT`
+# GIT demostrations and teamwork
 
-It is practice with git command and remote repository
+
+Showing git local and remote capabilities
