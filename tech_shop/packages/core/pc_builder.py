@@ -67,7 +67,6 @@ class PCBuilderService:
                     'total': 0
                 }
 
-            # ИСПРАВЛЕНО: quantity_at_storage вместо quantity
             if product.quantity_at_storage < 1:
                 return {
                     'success': False,
