@@ -46,3 +46,10 @@ clean:
 	py -c "import os, shutil; [shutil.rmtree(d, ignore_errors=True) for d in ['__pycache__', 'htmlcov', '.pytest_cache', 'build', 'dist']]"
 	py -c "import os; [os.remove(f) for f in os.listdir('.') if f.endswith('.pyc') or f.endswith('.db')]"
 	py -c "import os; [os.remove(os.path.join(r, f)) for r, _, fs in os.walk('.') for f in fs if f.endswith('.pyc') or '__pycache__' in r]"
+
+
+build-lib:
+	cd packages/core && py -m build
+
+install-lib-local:
+	py -m pip install -e packages/core
