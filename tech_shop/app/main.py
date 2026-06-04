@@ -176,37 +176,51 @@ class TechShopApp:
             self.basket_window = None
     
     def _show_receipt(self, receipt):
+
         win = tk.Toplevel(self.root)
-        win.title(f"Чек №{receipt['id']}")
+        win.title(f"Чек №{receipt.id_check}")
         win.geometry("480x500")
         win.configure(bg="#f0f0f0")
         
         frame = tk.Frame(win, bg="#f0f0f0", padx=15, pady=15)
         frame.pack(fill='both', expand=True)
         
-        tk.Label(frame, text=f"ЧЕК №{receipt['id']}", font="Arial 16 bold", bg="#f0f0f0", fg="#2c6e9e").pack(pady=5)
-        tk.Label(frame, text=receipt['date'], font="Arial 10", bg="#f0f0f0", fg="#555555").pack(pady=2)
+        tk.Label(frame, text=f"ЧЕК №{receipt.id_check}", font="Arial 16 bold",
+                bg="#f0f0f0", fg="#2c6e9e").pack(pady=5)
+        tk.Label(frame, text=receipt.created_at, font="Arial 10",
+                bg="#f0f0f0", fg="#555555").pack(pady=2)
         tk.Label(frame, text="-" * 40, font="Arial 10", bg="#f0f0f0").pack()
         
         items_frame = tk.Frame(frame, bg="#f0f0f0")
         items_frame.pack(fill='both', expand=True, pady=5)
         
-        tk.Label(items_frame, text="Товар", width=25, anchor='w', font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=0, sticky='w')
-        tk.Label(items_frame, text="Кол-во", width=6, anchor='e', font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=1, padx=5)
-        tk.Label(items_frame, text="Цена", width=8, anchor='e', font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=2, padx=5)
-        tk.Label(items_frame, text="Сумма", width=8, anchor='e', font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=3, padx=5)
+        tk.Label(items_frame, text="Товар", width=25, anchor='w',
+                font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=0, sticky='w')
+        tk.Label(items_frame, text="Кол-во", width=6, anchor='e',
+                font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=1, padx=5)
+        tk.Label(items_frame, text="Цена", width=8, anchor='e',
+                font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=2, padx=5)
+        tk.Label(items_frame, text="Сумма", width=8, anchor='e',
+                font="Arial 10 bold", bg="#f0f0f0").grid(row=0, column=3, padx=5)
         
-        for i, (_, name, qty, price, total) in enumerate(receipt['items'], start=1):
-            tk.Label(items_frame, text=name[:25], width=25, anchor='w', font="Arial 10", bg="#f0f0f0").grid(row=i, column=0, sticky='w')
-            tk.Label(items_frame, text=str(qty), width=6, anchor='e', font="Arial 10", bg="#f0f0f0").grid(row=i, column=1, padx=5)
-            tk.Label(items_frame, text=f"{price:.2f}", width=8, anchor='e', font="Arial 10", bg="#f0f0f0").grid(row=i, column=2, padx=5)
-            tk.Label(items_frame, text=f"{total:.2f}", width=8, anchor='e', font="Arial 10", bg="#f0f0f0").grid(row=i, column=3, padx=5)
+        for i, item in enumerate(receipt.items, start=1):
+            tk.Label(items_frame, text=item.product_name[:25], width=25, anchor='w',
+                    font="Arial 10", bg="#f0f0f0").grid(row=i, column=0, sticky='w')
+            tk.Label(items_frame, text=str(item.quantity), width=6, anchor='e',
+                    font="Arial 10", bg="#f0f0f0").grid(row=i, column=1, padx=5)
+            tk.Label(items_frame, text=f"{item.price:.2f}", width=8, anchor='e',
+                    font="Arial 10", bg="#f0f0f0").grid(row=i, column=2, padx=5)
+            tk.Label(items_frame, text=f"{item.total:.2f}", width=8, anchor='e',
+                    font="Arial 10", bg="#f0f0f0").grid(row=i, column=3, padx=5)
         
         tk.Label(frame, text="-" * 40, font="Arial 10", bg="#f0f0f0").pack(pady=5)
-        tk.Label(frame, text=f"ИТОГО: {receipt['total']:.2f} руб.", font="Arial 14 bold", bg="#f0f0f0", fg="#2c6e9e").pack(pady=5)
-        tk.Button(frame, text="Закрыть", font="Arial 12", bg="#2c6e9e", fg="white", command=win.destroy).pack(pady=10)
+        tk.Label(frame, text=f"ИТОГО: {receipt.total_sum:.2f} руб.",
+                font="Arial 14 bold", bg="#f0f0f0", fg="#2c6e9e").pack(pady=5)
+        tk.Button(frame, text="Закрыть", font="Arial 12",
+                 bg="#2c6e9e", fg="white", command=win.destroy).pack(pady=10)
     
     def _open_catalog(self):
+
         if self.catalog_window and self.catalog_window.winfo_exists():
             self.catalog_window.lift()
             return
@@ -231,7 +245,9 @@ class TechShopApp:
         
         products = self.product_service.get_all()
         for p in products:
-            tk.Label(scrollable, text=f"{p.name} — {p.price:.2f} руб.", font="Arial 12", bg="#f0f0f0", fg="#333333").pack(anchor='w', pady=2, padx=10)
+            tk.Label(scrollable, text=f"{p.name_of_product} — {p.price:.2f} руб.",
+                    font="Arial 12", bg="#f0f0f0", fg="#333333").pack(
+                anchor='w', pady=2, padx=10)
         
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
