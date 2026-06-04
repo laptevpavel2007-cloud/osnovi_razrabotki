@@ -1,7 +1,7 @@
 FROM python:3.14-slim
 
 LABEL maintainer="Laptevpavel2007@gmail.com"
-LABEL description="Tech Shop - Магазин техники (Python 3.14)"
+LABEL description="Tech Shop - Магазин техники"
 
 RUN apt-get update && apt-get install -y \
     python3-tk \
