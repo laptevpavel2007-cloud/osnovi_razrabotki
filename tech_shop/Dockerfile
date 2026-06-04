@@ -1,12 +1,10 @@
 FROM python:3.14-slim
 
 LABEL maintainer="Laptevpavel2007@gmail.com"
-LABEL description="Tech Shop - Магазин техники"
+LABEL description="Tech Shop"
 
 RUN apt-get update && apt-get install -y \
-    python3-tk \
-    tk \
-    locales \
+    python3-tk tk locales \
     && rm -rf /var/lib/apt/lists/*
 
 RUN sed -i '/ru_RU.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
@@ -22,9 +20,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY packages/ ./packages/
 COPY app/ ./app/
 COPY data/ ./data/
-COPY scripts/ ./scripts/
-
-RUN chmod +x scripts/*.sh
 
 ENV APP_ENV=production
 ENV DB_PATH=/app/data/store.db

@@ -60,12 +60,12 @@ class ReceiptService:
                 )
 
         return Receipt(
-            id_check=check_id,
+            id_check=check_id,  # ← должно быть id_check, а не id
             created_at=dt.datetime.now().strftime("%d.%m.%Y %H:%M:%S"),
             cashier_id=cashier_id,
             items=receipt_items,
             total_sum=sum(item.total for item in receipt_items),
-        )
+        ) 
 
     def check_exists(self, check_id: int) -> bool:
         row = self.database.fetchone(
