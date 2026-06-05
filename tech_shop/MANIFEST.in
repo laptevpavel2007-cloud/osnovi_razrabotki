@@ -1,0 +1,24 @@
+# Включаем все каталоги проекта целиком
+graft app
+graft packages
+graft tests
+graft docs
+graft infra
+graft scripts
+graft data
+
+# Отдельные файлы в корне
+include README.md
+include requirements.txt
+include Makefile
+include Dockerfile
+include docker-compose.yaml
+include .dockerignore
+include .gitignore
+
+# Выкидываем мусор
+global-exclude __pycache__/*
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude *.db *.sqlite
+global-exclude .DS_Store Thumbs.db

@@ -12,3 +12,7 @@
    ```bash
    git clone git@github.com:laptevpavel2007-cloud/osnovi_razrabotki.git
    cd tech_shop
+
+2. Установите с TestPyPi
+   ```bash
+   pip install -i https://test.pypi.org/simple/ tech-shop

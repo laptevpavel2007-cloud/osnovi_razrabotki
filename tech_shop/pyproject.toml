@@ -3,22 +3,23 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tech-shop-core"
+name = "tech-shop"
 version = "0.1.0"
-description = "Core business logic for Tech Shop - electronics store management"
+description = "Tech Shop - electronics store management"
 requires-python = ">=3.14"
 readme = "README.md"
-license = {text = "MIT"}
+license = { text = "MIT" }
 authors = [
-    {name = "Laptev Pavel, Chuhnov Arseniy", email = "Laptevpavel2007@gmail.com"}
+    { name = "Laptev Pavel, Chuhnov Arseniy", email = "Laptevpavel2007@gmail.com" },
 ]
-keywords = ["tech-shop", "business-logic", "electronics-store"]
+keywords = ["tech-shop", "electronics-store"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3.14",
     "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
 ]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["*"]
+include = ["app*", "packages*"]
