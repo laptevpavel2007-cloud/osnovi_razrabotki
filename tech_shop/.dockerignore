@@ -22,7 +22,6 @@ ENV/
 .pytest_cache/
 .coverage
 htmlcov/
-tests/
 
 docs/
 README.md
@@ -32,17 +31,12 @@ Dockerfile
 docker-compose.yaml
 
 Makefile
-scripts/
 
 *.db
 *.sqlite
 *.sqlite3
 
+
 .DS_Store
 Thumbs.db
 desktop.ini
-
-*.log
-
-*.tmp
-*.temp
