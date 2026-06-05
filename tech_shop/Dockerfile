@@ -17,9 +17,12 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Копируем код приложения
 COPY packages/ ./packages/
 COPY app/ ./app/
 COPY data/ ./data/
+COPY tests/ ./tests/
+COPY scripts/ ./scripts/
 
 ENV APP_ENV=production
 ENV DB_PATH=/app/data/store.db
