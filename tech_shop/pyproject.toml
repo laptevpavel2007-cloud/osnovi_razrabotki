@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "tech-shop"
 version = "0.1.0"
 description = "Tech Shop - electronics store management"
-requires-python = ">=3.14"
+requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [

@@ -2,7 +2,7 @@
 
 
 ### Требования
-- **Python 3.14**
+- **Python 3.11**
 - Docker & Docker Compose
 - GNU Make
 
@@ -13,6 +13,10 @@
    git clone git@github.com:laptevpavel2007-cloud/osnovi_razrabotki.git
    cd tech_shop
 
-2. Установите с TestPyPi
+ИЛИ. Установите с TestPyPi:
    ```bash
    pip install -i https://test.pypi.org/simple/ tech-shop
+
+2. Узнать команды make:
+   ```bash
+   make help

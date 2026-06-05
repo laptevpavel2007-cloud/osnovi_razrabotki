@@ -1,4 +1,3 @@
-import sys
 import os
 
 DB_PATH = os.environ.get('DB_PATH', 'store.db')
