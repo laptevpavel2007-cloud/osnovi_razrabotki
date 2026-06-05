@@ -21,11 +21,11 @@ help:
 	@echo help          Показать справку
 	@echo setup         Установить зависимости
 	@echo run           Запустить приложение Tech Shop
-	@echo test          Запустить все тесты (pytest)
+	@echo test          Запустить все тесты "pytest"
 	@echo coverage      Отчет о покрытии кода тестами
-	@echo compose-up    Собрать и запустить контейнеры (Docker)
+	@echo compose-up    Собрать и запустить контейнеры "Docker"
 	@echo compose-down  Остановить и удалить контейнеры и тома
-	@echo check         Полная локальная проверка (тесты)
+	@echo check         Полная локальная проверка "тесты"
 	@echo clean         Удалить сгенерированные артефакты
  
 setup:
