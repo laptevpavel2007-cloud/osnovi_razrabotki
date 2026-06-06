@@ -1,0 +1,27 @@
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# Кэш и временные файлы Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Кэши инструментов анализа
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Сборка пакета
+build/
+dist/
+*.egg-info/
+*.egg
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
