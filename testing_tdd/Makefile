@@ -1,8 +1,19 @@
-PYTHON := .venv/bin/python
-PIP := .venv/bin/pip
-PYTEST := .venv/bin/pytest
-MYPY := .venv/bin/mypy
-RUFF := .venv/bin/ruff
+ifeq ($(OS),Windows_NT)
+    PYTHON := .venv/Scripts/python.exe
+    PIP := .venv/Scripts/pip.exe
+    PYTEST := .venv/Scripts/pytest.exe
+    MYPY := .venv/Scripts/mypy.exe
+    RUFF := .venv/Scripts/ruff.exe
+    SYS_PYTHON := py
+else
+    PYTHON := .venv/bin/python
+    PIP := .venv/bin/pip
+    PYTEST := .venv/bin/pytest
+    MYPY := .venv/bin/mypy
+    RUFF := .venv/bin/ruff
+    SYS_PYTHON := python3
+endif
+
 VENV := .venv
 
 .PHONY: all venv install check-requirements typecheck format lint test check clean
@@ -10,12 +21,12 @@ VENV := .venv
 all: check
 
 $(VENV):
-	python3 -m venv $(VENV)
+	$(SYS_PYTHON) -m venv $(VENV)
 
 install: $(VENV)
-	$(PIP) install --upgrade pip
-	$(PIP) install -r requirements.txt
-	$(PIP) install -e .  # Устанавливаем пакет ndfl, чтобы pytest мог его импортировать
+	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install -r requirements.txt
+	$(PYTHON) -m pip install -e .
 
 check-requirements: install
 	$(PYTHON) scripts/check_deps.py
@@ -32,10 +43,8 @@ lint: install
 test: install
 	$(PYTEST) tests/ -v
 
+check: install check-requirements typecheck lint test
+	@echo "All checks passed!"
+
 clean:
-	rm -rf $(VENV)
-	find . -type d -name "__pycache__" -exec rm -rf {} +
-	find . -type d -name ".mypy_cache" -exec rm -rf {} +
-	find . -type d -name ".ruff_cache" -exec rm -rf {} +
-	find . -type d -name ".pytest_cache" -exec rm -rf {} +
-	find . -type f -name "*.pyc" -delete
+	$(SYS_PYTHON) scripts/clean.py

@@ -27,7 +27,7 @@ def get_imports(directories: list) -> set:
                                     if node.module:
                                         imports.add(node.module.split('.')[0])
                         except SyntaxError:
-                            print(f" Syntax error in {filepath}, skipping.")
+                            print(f"Syntax error in {filepath}, skipping.")
     return imports
 
 def get_requirements(req_file: str) -> set:
