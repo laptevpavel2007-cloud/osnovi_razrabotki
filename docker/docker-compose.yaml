@@ -1,23 +1,38 @@
 services:
+
   product-service:
     build: ./product_service
-    ports: 
+    ports:
       - "8001:8000"
+    networks:
+      - service-net
+
+  discount-service:
+    build: ./discount_service
+    ports:
+      - "8003:8000"
     networks:
       - service-net
 
   order-service:
     build: ./order_service
-    ports: 
+    ports:
       - "8002:8000"
     environment:
       PRODUCT_SERVICE_URL: http://product-service:8000
+      DISCOUNT_SERVICE_URL: http://discount-service:8000
+      DATABASE_URL: postgresql://app:app@db:5432/orders
     depends_on:
-      - product-service
+      db:
+        condition: service_healthy
+      product-service:
+        condition: service_started
+      discount-service:
+        condition: service_started
     networks:
       - service-net
 
-  db: 
+  db:
     image: postgres:16
     ports:
       - "5432:5432"
@@ -39,10 +54,6 @@ services:
 networks:
   service-net:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.28.10.0/24
-      
-volumes:
-  order-db:  
 
+volumes:
+  order-db:
